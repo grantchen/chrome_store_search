@@ -13,10 +13,9 @@ gem 'chrome_store_search'
 ```
 
 ### Usage
+It can works on ruby > 2.0.
 
 ```ruby
-# only 1.8.7 need this
-require 'rubygems'
 
 require 'chrome_store_search'
 
