@@ -13,7 +13,7 @@ gem 'chrome_store_search'
 ```
 
 ### Usage
-It can works on ruby > 2.0.
+It can work on ruby > 2.0.
 
 ```ruby
 
