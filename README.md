@@ -21,8 +21,12 @@ require 'chrome_store_search'
 
 chrome_store_search = ChromeStoreSearch::Search.new(:category => "apps")
 
-# it will return app arrary.
+# it will return app arrary which app only have basic info.
 chrome_store_search.search("bird")
+
+# also can get app detail info if have app id
+ChromeStoreSearch::App.new("dkiahcckehgdocgonfdickeagmoembpe")
+
 ```
 
 ###Configuring
@@ -35,6 +39,7 @@ chrome_store_search = ChromeStoreSearch::Search.new(:count => 100, :category => 
 ```
 
 ###Search Result
+The below is app basic info from app search
 ```ruby
 app_list = chrome_store_search.search("bird")
 app = app_list[0]
@@ -48,8 +53,8 @@ app.name
 # chrome app detail url
 app.url
 
-# chrome app description
-app.description
+# chrome app short description
+app.short_description
 
 # chrome app small logo url. (about 50*50)
 app.small_logo_url
@@ -65,3 +70,38 @@ app.total_rating_count
 
 # chrome app total users
 app.total_users
+
+```
+
+###App detail info
+The below is app detail info which get it by app id
+
+```ruby
+app = ChromeStoreSearch::App.new("dkiahcckehgdocgonfdickeagmoembpe")
+
+# it also can get basic info same as above
+# id, name, url, short_description, small_logo_url,
+# big_logo_url, rating, total_rating_count, total_users
+
+# app long description
+app.description
+
+# app site
+app.site
+
+# app version
+app.version
+
+# app updated date
+app.updated_at
+
+# app support url
+app.support_url
+
+# app videos url(array)
+app.videos
+
+# app images url(array)
+app.images
+
+```
