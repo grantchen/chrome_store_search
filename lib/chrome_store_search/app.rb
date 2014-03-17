@@ -4,7 +4,6 @@ require File.expand_path(File.dirname(__FILE__) + '/string_utility')
 
 module ChromeStoreSearch
   class App
-    include StringUtility
     attr_accessor :id, :name, :url, :short_description, :small_logo_url,
                   :big_logo_url, :rating, :total_rating_count,
                   :total_users, :description, :site, :version,
@@ -51,7 +50,7 @@ module ChromeStoreSearch
     end
 
     def parse_detail(app_detail_body)
-      detail_info = JSON.parse(gsub_continuation_commas(app_detail_body[4..-1]))[1][1]
+      detail_info = JSON.parse(StringUtility.gsub_continuation_commas(app_detail_body[4..-1]))[1][1]
       basic_info = detail_info[0]
       set_basic_info(basic_info)
       self.description = detail_info[1]

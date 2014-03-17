@@ -4,10 +4,9 @@ require File.expand_path(File.dirname(__FILE__) + '/string_utility')
 
 module ChromeStoreSearch
   class AppParser
-    include StringUtility
 
     def self.parse(apps_json_body)
-      apps_json_array = JSON.parse(gsub_continuation_commas(apps_json_body[4..-1]))[1][1]
+      apps_json_array = JSON.parse(StringUtility.gsub_continuation_commas(apps_json_body[4..-1]))[1][1]
       apps = []
       apps_json_array.each do |app_item|
         apps << new_app_instance(app_item)

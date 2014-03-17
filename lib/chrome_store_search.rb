@@ -1,3 +1,3 @@
-$LOAD_PATH.unshift "#{File.dirname(__FILE__)}/chrome_store_search"
-require 'rubygems'
-require 'search'
+require 'chrome_store_search/search'
+module ChromeStoreSearch
+end
