@@ -6,7 +6,9 @@ require File.expand_path(File.dirname(__FILE__) + '/app_parser')
 module ChromeStoreSearch
   class Search
 
-    CHROME_STORE_BASE_URL = "https://chrome.google.com/webstore/ajax/item?"
+    CHROME_STORE_URL = "https://chrome.google.com/webstore/"
+
+    CHROME_STORE_SEARCH_URL = CHROME_STORE_URL + "ajax/item?"
 
     DEFAULT_SEARCH_CONDITION = {:hl =>"en-US",
       :count => 20,
@@ -30,13 +32,23 @@ module ChromeStoreSearch
 
     def init_query_url
       query_url = ""
-      query_url << CHROME_STORE_BASE_URL
+      query_url << CHROME_STORE_SEARCH_URL
       query_url << "hl=#{@search_condition[:hl]}"
       query_url << "&count=#{@search_condition[:count]}"
-      query_url << "&pv=1394218756"
+      query_url << "&pv=#{get_pv}"
       query_url << "&container=CHROME&sortBy=0"
       query_url << "&category=#{@search_condition[:category]}" if @search_condition[:category]
       query_url << "&searchTerm=#{CGI.escape(@keyword)}"
     end
+
+    def get_pv
+      conn = Faraday.new(:url => CHROME_STORE_URL) do |faraday|
+        faraday.request  :url_encoded             # form-encode POST params
+        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      end
+      res = conn.get ''
+      res.body.match(/\/webstore\/static\/(\d+)\/wall/)[1]
+    end
+
   end
 end
