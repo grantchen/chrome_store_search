@@ -44,7 +44,7 @@ module ChromeStoreSearch
     def init_detail_url(id)
       detail_url = APP_DETAIL_BASE_URL
       detail_url << "hl=#{@parmeter[:hl]}"
-      detail_url << "&pv=1394218756"
+      detail_url << "&pv=#{StringUtility.get_pv}"
       detail_url << "&id=#{id}"
       detail_url << "&container=CHROME"
     end
