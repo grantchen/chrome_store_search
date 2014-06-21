@@ -1,4 +1,5 @@
 require 'faraday'
+require 'json'
 
 module ChromeStoreSearch
   class StringUtility
@@ -22,7 +23,8 @@ module ChromeStoreSearch
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
       res = conn.get ''
-      res.body.match(/\/webstore\/static\/(\d+)\/wall/)[1]
+      session_str = gsub_continuation_commas(res.body.match(/<script type="application\/json" id="cws-session-data">([\s\S]*?)<\/script>/i)[1])
+      JSON.parse(session_str)[-6]
     end
   end
 end
