@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'cgi'
 require 'faraday'
+require 'nokogiri'
 require File.expand_path(File.dirname(__FILE__) + '/app_parser')
 require File.expand_path(File.dirname(__FILE__) + '/string_utility')
 

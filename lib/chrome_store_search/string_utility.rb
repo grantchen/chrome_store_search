@@ -4,7 +4,7 @@ require 'json'
 module ChromeStoreSearch
   class StringUtility
 
-    CHROME_STORE_URL = "https://chrome.google.com/webstore/"
+    CHROME_STORE_URL = "https://chrome.google.com/webstore/category/apps"
 
     def self.gsub_continuation_commas(json_str)
       json_str.gsub(/,,,*/) do |commas_str|
@@ -23,8 +23,9 @@ module ChromeStoreSearch
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
       res = conn.get ''
-      session_str = gsub_continuation_commas(res.body.match(/<script type="application\/json" id="cws-session-data">([\s\S]*?)<\/script>/i)[1])
-      JSON.parse(session_str)[-6]
+      doc = Nokogiri::HTML(res.body)
+      cws_session_data =  doc.xpath("//script[@id='cws-session-data']").first.content
+      JSON.parse(cws_session_data)[-7]
     end
   end
 end
