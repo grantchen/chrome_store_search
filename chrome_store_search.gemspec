@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'chrome_store_search'
-  s.version     = '0.0.9'
+  s.version     = '0.0.10'
   s.date        = '2014-11-05'
   s.summary     = "chrome web store search"
   s.description = "chrome web store apps, extensions and themes search"

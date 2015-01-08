@@ -1,5 +1,6 @@
 require 'faraday'
 require 'json'
+require 'nokogiri'
 
 module ChromeStoreSearch
   class StringUtility
@@ -16,7 +17,6 @@ module ChromeStoreSearch
       end
     end
 
-
     def self.get_pv
       conn = Faraday.new(:url => CHROME_STORE_URL) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
@@ -25,7 +25,7 @@ module ChromeStoreSearch
       res = conn.get ''
       doc = Nokogiri::HTML(res.body)
       cws_session_data =  doc.xpath("//script[@id='cws-session-data']").first.content
-      JSON.parse(cws_session_data)[-7]
+      JSON.parse(cws_session_data)[-8]
     end
   end
 end
