@@ -7,7 +7,8 @@ module ChromeStoreSearch
     attr_accessor :id, :name, :url, :short_description, :small_logo_url,
                   :big_logo_url, :rating, :total_rating_count,
                   :total_users, :description, :site, :version,
-                  :updated_at, :support_url, :videos, :images
+                  :updated_at, :support_url, :videos, :images,
+                  :size, :languages
 
     APP_DETAIL_BASE_URL = "https://chrome.google.com/webstore/ajax/detail?"
 
@@ -58,6 +59,8 @@ module ChromeStoreSearch
       self.support_url = detail_info[5]
       self.version = detail_info[6]
       self.updated_at = detail_info[7]
+      self.languages = detail_info[8]
+      self.size = detail_info[-8]
       videos_images = detail_info[11]
       videos_images.each do |vi|
         if vi[18].include?("https://i.ytimg.com")

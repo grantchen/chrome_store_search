@@ -104,4 +104,10 @@ app.videos
 # app images url(array)
 app.images
 
+# app size(ex: 14.52KB)
+app.size
+
+# app languages(array)
+app.languages
+
 ```
