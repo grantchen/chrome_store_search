@@ -25,7 +25,7 @@ module ChromeStoreSearch
       res = conn.get ''
       doc = Nokogiri::HTML(res.body)
       cws_session_data =  doc.xpath("//script[@id='cws-session-data']").first.content
-      JSON.parse(cws_session_data)[-8]
+      JSON.parse(cws_session_data)[-9]
     end
   end
 end
