@@ -1,18 +1,18 @@
 Gem::Specification.new do |s|
   s.name        = 'chrome_store_search'
-  s.version     = '0.0.12'
-  s.date        = '2015-11-09'
-  s.summary     = "chrome web store search"
-  s.description = "chrome web store apps, extensions and themes search"
-  s.authors     = ["Grant Chen"]
+  s.version     = '0.0.13'
+  s.date        = '2015-10-06'
+  s.summary     = 'chrome web store search'
+  s.description = 'chrome web store apps, extensions and themes search'
+  s.authors     = ['Grant Chen']
   s.email       = 'kucss@hotmail.com'
 
-  s.add_runtime_dependency 'json',   '~> 1.8', '>= 1.8.1'
+  s.add_runtime_dependency 'json', '~> 1.8', '>= 1.8.1'
   s.add_runtime_dependency 'faraday', '~> 0.8', '>= 0.8.8'
   s.add_runtime_dependency 'nokogiri', '~> 1.6', '>= 1.6.4'
 
-  s.files         = Dir['lib/**/*.rb'] + Dir['*.rb']
-  s.homepage    =
+  s.files = Dir['lib/**/*.rb'] + Dir['*.rb']
+  s.homepage =
     'https://github.com/grantchen/chrome_store_search'
-  s.license       = 'MIT'
+  s.license = 'MIT'
 end
